@@ -24,12 +24,11 @@ public class MyCommandExecutor implements CommandExecutor {
 		player = (Player) sender;
 
 		/**
-		 * This command allow to show / edit the
-		 * walk player speed.
+		 * This command allow to show / edit the walk player speed.
 		 * 
 		 * ingame command syntax: /redwalkspeed [walk-speed | 'back']
 		 */
-		
+
 		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
 
 			// without arguments --> syntax help messages
@@ -53,11 +52,11 @@ public class MyCommandExecutor implements CommandExecutor {
 					if (matchSpeedArgument(args[0])) {
 						String matchedString = (args[0]).replaceFirst(",", ".");
 						float speed = Float.parseFloat(matchedString);
-						
+
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
 						walkSpeedCmd.setSpecificSpeed(speed);
 						return true;
-						
+
 					} else {
 						// e.g. "/wspeed TestUser"
 						// if x is a string (player name) = admin commands
@@ -83,11 +82,11 @@ public class MyCommandExecutor implements CommandExecutor {
 					if (matchSpeedArgument(args[0])) {
 						String matchedString = (args[0]).replaceFirst(",", ".");
 						float speed = Float.parseFloat(matchedString);
-						
+
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player, args[1]);
 						walkSpeedCmd.setSpecificSpeedOther(speed);
 						return true;
-						
+
 					} else {
 						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.wspeed"));
 						return true;
@@ -101,12 +100,11 @@ public class MyCommandExecutor implements CommandExecutor {
 		}
 
 		/**
-		 * This command allow to show / edit the
-		 * fly player speed.
+		 * This command allow to show / edit the fly player speed.
 		 * 
 		 * ingame command syntax: /redflyspeed [fly-speed | 'back']
 		 */
-		
+
 		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
 
 			// without arguments --> syntax help messages
@@ -130,11 +128,11 @@ public class MyCommandExecutor implements CommandExecutor {
 					if (matchSpeedArgument(args[0])) {
 						String matchedString = (args[0]).replaceFirst(",", ".");
 						float speed = Float.parseFloat(matchedString);
-						
+
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
 						flySpeedCmd.setSpecificSpeed(speed);
 						return true;
-						
+
 					} else {
 						// "/fspeed TestUser"
 						// if x is a string (player name) = admin commands
@@ -160,11 +158,11 @@ public class MyCommandExecutor implements CommandExecutor {
 					if (matchSpeedArgument(args[0])) {
 						String matchedString = (args[0]).replaceFirst(",", ".");
 						float speed = Float.parseFloat(matchedString);
-						
+
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player, args[1]);
 						flySpeedCmd.setSpecificSpeedOther(speed);
 						return true;
-						
+
 					} else {
 						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.fspeed"));
 						return true;
@@ -180,11 +178,10 @@ public class MyCommandExecutor implements CommandExecutor {
 		return false;
 
 	}
-	
+
 	/**
-	 * This method validate the command argument
-	 * to switch between a <speed> and <playername>
-	 * input.
+	 * This method validate the command argument to switch between a <speed> and
+	 * <playername> input.
 	 * 
 	 * @return 'true' if the input is a rationale number
 	 */

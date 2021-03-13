@@ -21,7 +21,7 @@ public class RedSpeed extends JavaPlugin {
 		saveDefaultConfig();
 
 		cmdExecutor = new MyCommandExecutor(this);
-		//the synonym commands are defined with the plugin.yml
+		// the synonym commands are defined with the plugin.yml
 		getCommand("redwalkspeed").setExecutor(cmdExecutor);
 		getCommand("redflyspeed").setExecutor(cmdExecutor);
 	}
@@ -31,9 +31,8 @@ public class RedSpeed extends JavaPlugin {
 	}
 
 	/**
-	 * This method read the specific messages in the
-	 * config.yml and replace the minecraft color codes
-	 * to a valid sign.
+	 * This method read the specific messages in the config.yml and replace the
+	 * minecraft color codes to a valid sign.
 	 * 
 	 * @return the config messages (String)
 	 */

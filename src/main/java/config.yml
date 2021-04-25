@@ -1,5 +1,5 @@
 messages:
-  präfix: "&8[&4Red&fSpeed&8]&f: "
+  prefix: "&8[&4Red&fSpeed&8]&f: "
   noPermission: "&cDu hast &4keine Berechtigung &cdafür."
   player-not-found: "&cEs ist &4kein Spieler &cmit dem Namen &4%name% &conline."
   onlyIngame: "&cDieser Befehl kann &4nur Ingame ausgeführt werden&c."

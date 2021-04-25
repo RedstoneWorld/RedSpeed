@@ -17,7 +17,7 @@ public class MyCommandExecutor implements CommandExecutor {
 
 		Player player = null;
 		if (!(sender instanceof Player)) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("onlyIngame"));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
 			return false;
 		}
 
@@ -88,13 +88,13 @@ public class MyCommandExecutor implements CommandExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.wspeed"));
+						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.wspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
 			return true;
 
 		}
@@ -164,13 +164,13 @@ public class MyCommandExecutor implements CommandExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.fspeed"));
+						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.fspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
 			return true;
 
 		}

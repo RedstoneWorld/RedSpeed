@@ -36,7 +36,7 @@ public class WalkSpeedCommand {
 		}
 
 		float ws = player.getWalkSpeed();
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("show.wspeed-own", "wspeed", String.valueOf(ws)));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("show.wspeed-own", "wspeed", String.valueOf(ws)));
 		return true;
 
 	}
@@ -52,7 +52,7 @@ public class WalkSpeedCommand {
 		}
 
 		player.setWalkSpeed(DEFAULT_WALK_SPEED);
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.ownDefaultValue"));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownDefaultValue"));
 		return true;
 
 	}
@@ -68,7 +68,7 @@ public class WalkSpeedCommand {
 		}
 
 		player.setWalkSpeed(x);
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
 		return true;
 
 	}
@@ -86,7 +86,7 @@ public class WalkSpeedCommand {
 		}
 
 		float ws = player.getWalkSpeed();
-		sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("show.wspeed-other", "name", targetName, "wspeed", String.valueOf(ws)));
+		sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("show.wspeed-other", "name", targetName, "wspeed", String.valueOf(ws)));
 		return true;
 
 	}
@@ -103,9 +103,9 @@ public class WalkSpeedCommand {
 		
 		player.setWalkSpeed(DEFAULT_WALK_SPEED);
 		if (sender != player) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(DEFAULT_WALK_SPEED)));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(DEFAULT_WALK_SPEED)));
 		}
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.ownDefaultValue"));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownDefaultValue"));
 		return true;
 
 	}
@@ -122,9 +122,9 @@ public class WalkSpeedCommand {
 
 		player.setWalkSpeed(x);
 		if (sender != player) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(x)));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(x)));
 		}
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
 		return true;
 
 	}
@@ -134,7 +134,7 @@ public class WalkSpeedCommand {
 	public boolean hasSeePermission() {
 		
 		if (!player.hasPermission("rwm.redspeed.wspeed.see")) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -143,7 +143,7 @@ public class WalkSpeedCommand {
 	public boolean hasSetPermission() {
 		
 		if (!player.hasPermission("rwm.redspeed.wspeed.set")) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -152,7 +152,7 @@ public class WalkSpeedCommand {
 	public boolean hasSeeOtherPermission() {
 		
 		if (!sender.hasPermission("rwm.redspeed.wspeed.see.other")) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -161,7 +161,7 @@ public class WalkSpeedCommand {
 	public boolean hasSetOtherPermission() {
 		
 		if (!sender.hasPermission("rwm.redspeed.wspeed.set.other")) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -175,7 +175,7 @@ public class WalkSpeedCommand {
 	public boolean isOnline() {
 		this.player = (Player) plugin.getServer().getPlayerExact(targetName);
 		if (this.player == null) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("player-not-found", "name", targetName));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("player-not-found", "name", targetName));
 			return false;
 		}
 		return true;
@@ -187,7 +187,7 @@ public class WalkSpeedCommand {
 	 */
 	public boolean checkValue(float speed) {
 		if ( speed < 0.0 || speed > MAX_WALK_SPEED ) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("wrongValue.wspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue.wspeed"));
 			return false;
 		}
 		return true;

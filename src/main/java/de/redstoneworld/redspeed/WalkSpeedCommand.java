@@ -24,10 +24,15 @@ public class WalkSpeedCommand {
 	}
 
 	// normal player commands:
-	
+
 	/**
-	 * This method allow to SHOW the own
-	 * walk speed value.
+	 * Shows the walk speed value of the player.
+	 *
+	 * When the operation was successful the player will get a message.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean sendWalkSpeedMsg() {
 
@@ -42,8 +47,11 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own
-	 * walk value to the default value.
+	 * Sets the own walk speed value to the default value.
+	 *
+	 * When the operation was successful the player will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean setDefaultSpeed() {
 
@@ -58,26 +66,35 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own
-	 * walk speed value to the requested value.
+	 * Sets the walk speed value of the sender to the requested value.
+	 *
+	 * When the operation was successful the sender will get a message.
+	 *
+	 * @param speed The speed that the player should be set.
+	 * @return If the operation was successful.
 	 */
-	public boolean setSpecificSpeed(float x) {
+	public boolean setSpecificSpeed(float speed) {
 		
-		if (!hasSetPermission() || !checkValue(x)) {
+		if (!hasSetPermission() || !checkValue(speed)) {
 			return true;
 		}
 
-		player.setWalkSpeed(x);
-		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
+		player.setWalkSpeed(speed);
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(speed)));
 		return true;
 
 	}
 	
 	// admin commands:
-	
+
 	/**
-	 * This method allow to SHOW walk speed value
-	 * of another player.
+	 * Shows the walk speed value of another player to the sender.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * When the operation was successful the sender will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean sendWalkSpeedMsgOther() {
 		
@@ -92,8 +109,13 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET walk speed value
-	 * of another player to the default value.
+	 * Sets the walk speed value of another player to the default value.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * When the operation was successful the sender and the player will get a message.
+	 *
+	 * @return If this operation was successful.
 	 */
 	public boolean setDefaultSpeedOther() {
 
@@ -111,26 +133,39 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET walk speed value
-	 * of another player to the requested value.
+	 * Sets the walk speed value of the player to the requested value.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * When the operation was successful the sender and the player will get a message.
+	 *
+	 * @param speed The speed that the player should be set.
+	 * @return If this operation was successful.
 	 */
-	public boolean setSpecificSpeedOther(float x) {
+	public boolean setSpecificSpeedOther(float speed) {
 		
-		if (!hasSetOtherPermission() || !isOnline() || !checkValue(x)) {
+		if (!hasSetOtherPermission() || !isOnline() || !checkValue(speed)) {
 			return true;
 		}
 
-		player.setWalkSpeed(x);
+		player.setWalkSpeed(speed);
 		if (sender != player) {
-			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(x)));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.other", "name", targetName, "wspeed", String.valueOf(speed)));
 		}
-		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(x)));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-wspeed.ownSpecificValue", "wspeed", String.valueOf(speed)));
 		return true;
 
 	}
 	
 	// permission check:
-	
+
+	/**
+	 * Returns a boolean that shows if the player has the permission to see the walk speed of himself.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSeePermission() {
 		
 		if (!player.hasPermission("rwm.redspeed.wspeed.see")) {
@@ -139,7 +174,14 @@ public class WalkSpeedCommand {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Returns a boolean that shows if the player has the permission to change the walk speed of himself.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSetPermission() {
 		
 		if (!player.hasPermission("rwm.redspeed.wspeed.set")) {
@@ -148,7 +190,14 @@ public class WalkSpeedCommand {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Returns a boolean that shows if the sender has the permission to see the walk-speed of other players.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSeeOtherPermission() {
 		
 		if (!sender.hasPermission("rwm.redspeed.wspeed.see.other")) {
@@ -157,7 +206,14 @@ public class WalkSpeedCommand {
 		}
 		return true;
 	}
-	
+
+	/**
+	 * Returns a boolean that shows if the sender has the permission to set the walk-speed of other players.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSetOtherPermission() {
 		
 		if (!sender.hasPermission("rwm.redspeed.wspeed.set.other")) {
@@ -166,11 +222,14 @@ public class WalkSpeedCommand {
 		}
 		return true;
 	}
-	
+
 	/**
-	 * This method check if the player is online
-	 * on the server. The user must online to
-	 * SHOW or SET the walk speed value of him.
+	 * Returns a boolean that shows if the player is online on the server.
+	 * The user must be online to SHOW or SET the fly speed value.
+	 *
+	 * When the targeted player is not online the sender will get a message.
+	 *
+	 * @return If the player is online or not.
 	 */
 	public boolean isOnline() {
 		this.player = (Player) plugin.getServer().getPlayerExact(targetName);
@@ -180,10 +239,14 @@ public class WalkSpeedCommand {
 		}
 		return true;
 	}
-	
+
 	/**
-	 * This method check the value of requested
-	 * walk speed value.
+	 * Returns a boolean that shows if the requested walk speed value is correct.
+	 *
+	 * When the value is not correct the targeted player will get a message.
+	 *
+	 * @param speed The speed of the player.
+	 * @return If the walk speed value is correct.
 	 */
 	public boolean checkValue(float speed) {
 		if ( speed < 0.0 || speed > MAX_WALK_SPEED ) {

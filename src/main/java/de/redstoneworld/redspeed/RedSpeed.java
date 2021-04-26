@@ -31,10 +31,13 @@ public class RedSpeed extends JavaPlugin {
 	}
 
 	/**
-	 * This method read the specific messages in the config.yml and replace the
-	 * minecraft color codes to a valid sign.
-	 * 
-	 * @return the config messages (String)
+	 * Returns the message with the placeholders inserted and colorcodes translated.
+	 *
+	 * When the key is not found "Unknown language key" will be returned.
+	 *
+	 * @param key The key to the string in the config
+	 * @param args The different placeholders
+	 * @return The message from the config.
 	 */
 	String getLang(String key, String... args) {
 		String lang = getConfig().getString("messages." + key, "&cUnknown language key &6" + key);

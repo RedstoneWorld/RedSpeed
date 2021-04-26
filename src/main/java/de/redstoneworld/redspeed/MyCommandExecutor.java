@@ -24,9 +24,9 @@ public class MyCommandExecutor implements CommandExecutor {
 		player = (Player) sender;
 
 		/**
-		 * This command allow to show / edit the walk player speed.
+		 * Shows / edits the walk speed of the player.
 		 * 
-		 * ingame command syntax: /redwalkspeed [walk-speed | 'back']
+		 * ingame command syntax: /redwalkspeed [walk-speed | 'back' | player]
 		 */
 
 		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
@@ -100,9 +100,9 @@ public class MyCommandExecutor implements CommandExecutor {
 		}
 
 		/**
-		 * This command allow to show / edit the fly player speed.
+		 * Shows / edits the fly speed of the player.
 		 * 
-		 * ingame command syntax: /redflyspeed [fly-speed | 'back']
+		 * ingame command syntax: /redflyspeed [fly-speed | 'back' | player]
 		 */
 
 		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
@@ -180,7 +180,7 @@ public class MyCommandExecutor implements CommandExecutor {
 	}
 
 	/**
-	 * This method validate the command argument to switch between a <speed> and
+	 * Returns the validation of the command argument if it is a <speed> or
 	 * <playername> input.
 	 * 
 	 * @return 'true' if the input is a rationale number

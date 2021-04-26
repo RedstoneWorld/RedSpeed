@@ -26,12 +26,18 @@ public class FlySpeedCommand {
 	// normal player commands:
 
 	/**
-	 * This method allow to SHOW the own fly speed value.
+	 * Shows the fly speed value of the player.
+	 *
+	 * When the operation was successful the player will get a message.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean sendFlySpeedMsg() {
 
 		if (!hasSeePermission()) {
-			return true;
+			return false;
 		}
 
 		float fs = player.getFlySpeed();
@@ -41,12 +47,16 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own fly speed value to the default value.
+	 * Sets the own fly speed value to the default value.
+	 *
+	 * When the operation was successful the player will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean setDefaultSpeed() {
 
 		if (!hasSetPermission()) {
-			return true;
+			return false;
 		}
 
 		player.setFlySpeed(DEFAULT_FLY_SPEED);
@@ -56,17 +66,22 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own fly speed value to the requested value.
+	 * Sets the fly speed value of the sender to the requested value.
+	 *
+	 * When the operation was successful the sender will get a message.
+	 *
+	 * @param speed The speed that the player should be set.
+	 * @return If the operation was successful.
 	 */
-	public boolean setSpecificSpeed(float x) {
+	public boolean setSpecificSpeed(float speed) {
 
-		if (!hasSetPermission() || !checkValue(x)) {
-			return true;
+		if (!hasSetPermission() || !checkValue(speed)) {
+			return false;
 		}
 
-		player.setFlySpeed(x);
+		player.setFlySpeed(speed);
 		player.sendMessage(plugin.getLang("prefix")
-				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(x)));
+				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(speed)));
 		return true;
 
 	}
@@ -74,12 +89,18 @@ public class FlySpeedCommand {
 	// admin commands:
 
 	/**
-	 * This method allow to SHOW fly speed value of another player.
+	 * Shows the fly speed value of another player to the sender.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * When the operation was successful the sender will get a message.
+	 *
+	 * @return If the operation was successful.
 	 */
 	public boolean sendFlySpeedMsgOther() {
 
 		if (!hasSeeOtherPermission() || !isOnline()) {
-			return true;
+			return false;
 		}
 
 		float fs = player.getFlySpeed();
@@ -90,13 +111,18 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET fly speed value of another player to the default
-	 * value.
+	 * Sets the fly speed value of another player to the default value.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * When the operation was successful the sender and the player will get a message.
+	 *
+	 * @return If this operation was successful.
 	 */
 	public boolean setDefaultSpeedOther() {
 
 		if (!hasSetOtherPermission() || !isOnline()) {
-			return true;
+			return false;
 		}
 
 		player.setFlySpeed(DEFAULT_FLY_SPEED);
@@ -110,28 +136,41 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET fly speed value of another player to the requested
-	 * value.
+	 * Sets the fly speed value of the player to the requested value.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * When the operation was successful the sender and the player will get a message.
+	 *
+	 * @param speed The speed that the player should be set.
+	 * @return If this operation was successful.
 	 */
-	public boolean setSpecificSpeedOther(float x) {
+	public boolean setSpecificSpeedOther(float speed) {
 
-		if (!hasSetOtherPermission() || !isOnline() || !checkValue(x)) {
-			return true;
+		if (!hasSetOtherPermission() || !isOnline() || !checkValue(speed)) {
+			return false;
 		}
 
-		player.setFlySpeed(x);
+		player.setFlySpeed(speed);
 		if (sender != player) {
 			sender.sendMessage(plugin.getLang("prefix")
-					+ plugin.getLang("success-fspeed.other", "name", targetName, "fspeed", String.valueOf(x)));
+					+ plugin.getLang("success-fspeed.other", "name", targetName, "fspeed", String.valueOf(speed)));
 		}
 		player.sendMessage(plugin.getLang("prefix")
-				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(x)));
+				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(speed)));
 		return true;
 
 	}
 
 	// permission check:
 
+	/**
+	 * Returns a boolean that shows if the player has the permission to see the fly speed of himself.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSeePermission() {
 
 		if (!player.hasPermission("rwm.redspeed.fspeed.see")) {
@@ -141,6 +180,13 @@ public class FlySpeedCommand {
 		return true;
 	}
 
+	/**
+	 * Returns a boolean that shows if the player has the permission to change the fly speed of himself.
+	 *
+	 * When the player does not have the permission the player will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSetPermission() {
 
 		if (!player.hasPermission("rwm.redspeed.fspeed.set")) {
@@ -150,6 +196,13 @@ public class FlySpeedCommand {
 		return true;
 	}
 
+	/**
+	 * Returns a boolean that shows if the sender has the permission to see the fly-speed of other players.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSeeOtherPermission() {
 
 		if (!sender.hasPermission("rwm.redspeed.fspeed.see.other")) {
@@ -159,6 +212,13 @@ public class FlySpeedCommand {
 		return true;
 	}
 
+	/**
+	 * Returns a boolean that shows if the sender has the permission to set the fly-speed of other players.
+	 *
+	 * When the sender does not have the permission the sender will get a message.
+	 *
+	 * @return If player has permission.
+	 */
 	public boolean hasSetOtherPermission() {
 
 		if (!sender.hasPermission("rwm.redspeed.fspeed.set.other")) {
@@ -169,8 +229,12 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method check if the player is online on the server. The user must online
-	 * to SHOW or SET the fly speed value of him.
+	 * Returns a boolean that shows if the player is online on the server.
+	 * The user must be online to SHOW or SET the fly speed value.
+	 *
+	 * When the targeted player is not online the sender will get a message.
+	 *
+	 * @return If the player is online or not.
 	 */
 	public boolean isOnline() {
 		this.player = (Player) plugin.getServer().getPlayerExact(targetName);
@@ -182,7 +246,12 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method check the value of requested fly speed value.
+	 * Returns a boolean that shows if the requested fly speed value is correct.
+	 *
+	 * When the value is not correct the targeted player will get a message.
+	 *
+	 * @param speed The speed of the player.
+	 * @return If the fly speed value is correct.
 	 */
 	public boolean checkValue(float speed) {
 		if (speed < 0.0 || speed > MAX_FLY_SPEED) {

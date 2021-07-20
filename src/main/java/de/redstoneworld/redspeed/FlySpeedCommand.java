@@ -12,21 +12,31 @@ public class FlySpeedCommand {
 	public static final float DEFAULT_FLY_SPEED = (float) 0.1;
 	public static final float MAX_FLY_SPEED = (float) 1;
 
+	/**
+	 * @param plugin the plugin
+	 * @param player the player there execute the command
+	 */
 	public FlySpeedCommand(RedSpeed plugin, Player player) {
 		this.plugin = plugin;
 		this.player = player;
 	}
 
-	public FlySpeedCommand(RedSpeed plugin, Player sender, String target) {
+	/**
+	 * @param plugin the plugin
+	 * @param sender the player there execute the command
+	 * @param commandArgs additional command arguments (= the target player)
+	 */
+	public FlySpeedCommand(RedSpeed plugin, Player sender, String commandArgs) {
 		this.plugin = plugin;
 		this.sender = sender;
-		this.targetName = target;
+		this.targetName = commandArgs;
 	}
 
 	// normal player commands:
 
 	/**
-	 * This method allow to SHOW the own fly speed value.
+	 * This method allow to SHOW the own fly speed value, if the executer has the permission to
+	 * use the command.
 	 */
 	public boolean sendFlySpeedMsg() {
 
@@ -35,13 +45,14 @@ public class FlySpeedCommand {
 		}
 
 		float fs = player.getFlySpeed();
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("show.fspeed-own", "fspeed", String.valueOf(fs)));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("show.fspeed-own", "fspeed", String.valueOf(fs)));
 		return true;
 
 	}
 
 	/**
-	 * This method allow to SET the own fly speed value to the default value.
+	 * This method allow to SET the own fly speed value back to the default value, if the executer
+	 * has the permission to use the command.
 	 */
 	public boolean setDefaultSpeed() {
 
@@ -50,31 +61,34 @@ public class FlySpeedCommand {
 		}
 
 		player.setFlySpeed(DEFAULT_FLY_SPEED);
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-fspeed.ownDefaultValue"));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-fspeed.ownDefaultValue"));
 		return true;
 
 	}
-
+	
 	/**
-	 * This method allow to SET the own fly speed value to the requested value.
+	 * This method allow to SET the own fly speed value to the requested value, if the executer
+	 * has the permission to use the command.
+	 * 
+	 * @param speed the requested fly speed value
 	 */
-	public boolean setSpecificSpeed(float x) {
+	public boolean setSpecificSpeed(float speed) {
 
-		if (!hasSetPermission() || !checkValue(x)) {
+		if (!hasSetPermission() || !checkValue(speed)) {
 			return true;
 		}
 
-		player.setFlySpeed(x);
-		player.sendMessage(plugin.getLang("präfix")
-				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(x)));
+		player.setFlySpeed(speed);
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(speed)));
 		return true;
 
 	}
 
 	// admin commands:
-
+	
 	/**
-	 * This method allow to SHOW fly speed value of another player.
+	 * This method allow to SHOW the fly speed value of another player, if the executer has
+	 * the permission to use the command. The target player must be online.
 	 */
 	public boolean sendFlySpeedMsgOther() {
 
@@ -83,15 +97,15 @@ public class FlySpeedCommand {
 		}
 
 		float fs = player.getFlySpeed();
-		sender.sendMessage(plugin.getLang("präfix")
+		sender.sendMessage(plugin.getLang("prefix")
 				+ plugin.getLang("show.fspeed-other", "name", targetName, "fspeed", String.valueOf(fs)));
 		return true;
 
 	}
-
+	
 	/**
-	 * This method allow to SET fly speed value of another player to the default
-	 * value.
+	 * This method allow to SET the fly speed value of another player back to the default value,
+	 * if the executer has the permission to use the command. The target player must be online.
 	 */
 	public boolean setDefaultSpeedOther() {
 
@@ -101,31 +115,33 @@ public class FlySpeedCommand {
 
 		player.setFlySpeed(DEFAULT_FLY_SPEED);
 		if (sender != player) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-fspeed.other", "name", targetName,
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-fspeed.other", "name", targetName,
 					"fspeed", String.valueOf(DEFAULT_FLY_SPEED)));
 		}
-		player.sendMessage(plugin.getLang("präfix") + plugin.getLang("success-fspeed.ownDefaultValue"));
+		player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-fspeed.ownDefaultValue"));
 		return true;
 
 	}
 
 	/**
-	 * This method allow to SET fly speed value of another player to the requested
-	 * value.
+	 * This method allow to SET the fly speed value of another player to the requested value,
+	 * if the executer has the permission to use the command. The target player must be online.
+	 * 
+	 * @param speed the requested fly speed value
 	 */
-	public boolean setSpecificSpeedOther(float x) {
+	public boolean setSpecificSpeedOther(float speed) {
 
-		if (!hasSetOtherPermission() || !isOnline() || !checkValue(x)) {
+		if (!hasSetOtherPermission() || !isOnline() || !checkValue(speed)) {
 			return true;
 		}
 
-		player.setFlySpeed(x);
+		player.setFlySpeed(speed);
 		if (sender != player) {
-			sender.sendMessage(plugin.getLang("präfix")
-					+ plugin.getLang("success-fspeed.other", "name", targetName, "fspeed", String.valueOf(x)));
+			sender.sendMessage(plugin.getLang("prefix")
+					+ plugin.getLang("success-fspeed.other", "name", targetName, "fspeed", String.valueOf(speed)));
 		}
-		player.sendMessage(plugin.getLang("präfix")
-				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(x)));
+		player.sendMessage(plugin.getLang("prefix")
+				+ plugin.getLang("success-fspeed.ownSpecificValue", "fspeed", String.valueOf(speed)));
 		return true;
 
 	}
@@ -135,7 +151,7 @@ public class FlySpeedCommand {
 	public boolean hasSeePermission() {
 
 		if (!player.hasPermission("rwm.redspeed.fspeed.see")) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -144,7 +160,7 @@ public class FlySpeedCommand {
 	public boolean hasSetPermission() {
 
 		if (!player.hasPermission("rwm.redspeed.fspeed.set")) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -153,7 +169,7 @@ public class FlySpeedCommand {
 	public boolean hasSeeOtherPermission() {
 
 		if (!sender.hasPermission("rwm.redspeed.fspeed.see.other")) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
@@ -162,20 +178,21 @@ public class FlySpeedCommand {
 	public boolean hasSetOtherPermission() {
 
 		if (!sender.hasPermission("rwm.redspeed.fspeed.set.other")) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("noPermission"));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
 			return false;
 		}
 		return true;
 	}
 
 	/**
-	 * This method check if the player is online on the server. The user must online
-	 * to SHOW or SET the fly speed value of him.
+	 * This method check if the player is online on the server.
+	 * 
+	 * @return "true" if the player is online on the server
 	 */
 	public boolean isOnline() {
 		this.player = (Player) plugin.getServer().getPlayerExact(targetName);
 		if (this.player == null) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("player-not-found", "name", targetName));
+			sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("player-not-found", "name", targetName));
 			return false;
 		}
 		return true;
@@ -183,10 +200,13 @@ public class FlySpeedCommand {
 
 	/**
 	 * This method check the value of requested fly speed value.
+	 * 
+	 * @param speed the requested fly speed value
+	 * @return "true" if the requested speed value is correct (inside of the allowed range)
 	 */
 	public boolean checkValue(float speed) {
 		if (speed < 0.0 || speed > MAX_FLY_SPEED) {
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("wrongValue.fspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue.fspeed"));
 			return false;
 		}
 		return true;

@@ -7,9 +7,9 @@ website: https://redstoneworld.de
 commands:
   redwalkspeed:
     description: Show or define your walk speed.
-    usage: /wspeed <speed or 'default'>
+    usage: /wspeed [walk-speed | 'back'] [player]
     aliases: [walkspeed, wspeed, ws]
   redflyspeed:
     description: Show or define your fly speed.
-    usage: /fspeed <speed or 'default'>
+    usage: /fspeed [fly-speed | 'back'] [player]
     aliases: [flyspeed, fspeed, fs]

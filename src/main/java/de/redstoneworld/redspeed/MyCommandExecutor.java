@@ -15,23 +15,24 @@ public class MyCommandExecutor implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-		Player player = null;
-		if (!(sender instanceof Player)) {
-			sender.sendMessage(plugin.getLang("präfix") + plugin.getLang("onlyIngame"));
-			return false;
-		}
-
-		player = (Player) sender;
-
 		/**
 		 * This command allow to show / edit the walk player speed.
 		 * 
-		 * ingame command syntax: /redwalkspeed [walk-speed | 'back']
+		 * ingame command syntax: /redwalkspeed [walk-speed | 'back'] [player]
 		 */
 
 		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
+			
+			Player player = null;
+			if (!(sender instanceof Player)) {
+				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
+				return true;
+			}
 
-			// without arguments --> syntax help messages
+			player = (Player) sender;
+			
+
+			// without arguments --> show walk-speed value
 			if (args.length == 0) {
 				WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
 				walkSpeedCmd.sendWalkSpeedMsg();
@@ -88,13 +89,13 @@ public class MyCommandExecutor implements CommandExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.wspeed"));
+						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.wspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
 			return true;
 
 		}
@@ -102,12 +103,21 @@ public class MyCommandExecutor implements CommandExecutor {
 		/**
 		 * This command allow to show / edit the fly player speed.
 		 * 
-		 * ingame command syntax: /redflyspeed [fly-speed | 'back']
+		 * ingame command syntax: /redflyspeed [fly-speed | 'back'] [player]
 		 */
 
 		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
+			
+			Player player = null;
+			if (!(sender instanceof Player)) {
+				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
+				return true;
+			}
 
-			// without arguments --> syntax help messages
+			player = (Player) sender;
+			
+
+			// without arguments --> show fly-speed value
 			if (args.length == 0) {
 				FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
 				flySpeedCmd.sendFlySpeedMsg();
@@ -164,13 +174,13 @@ public class MyCommandExecutor implements CommandExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.fspeed"));
+						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("präfix") + plugin.getLang("syntaxError.fspeed"));
+			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
 			return true;
 
 		}
@@ -180,8 +190,8 @@ public class MyCommandExecutor implements CommandExecutor {
 	}
 
 	/**
-	 * This method validate the command argument to switch between a <speed> and
-	 * <playername> input.
+	 * This method validate the input string and decide between a string (= playername)
+	 * and a number (= speed value).
 	 * 
 	 * @return 'true' if the input is a rationale number
 	 */

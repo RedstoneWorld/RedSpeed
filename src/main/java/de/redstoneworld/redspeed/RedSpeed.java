@@ -16,10 +16,9 @@ public class RedSpeed extends JavaPlugin {
 	private MyCommandExecutor cmdExecutor;
 
 	public void onEnable() {
-		getLogger().info("[RedSpeed]: Das Plugin wurde aktiviert!");
-
+		
 		saveDefaultConfig();
-
+		
 		cmdExecutor = new MyCommandExecutor(this);
 		// the synonym commands are defined with the plugin.yml
 		getCommand("redwalkspeed").setExecutor(cmdExecutor);
@@ -27,7 +26,7 @@ public class RedSpeed extends JavaPlugin {
 	}
 
 	public void onDisable() {
-		getLogger().info("[RedSpeed]: Das Plugin wurde deaktiviert!");
+		
 	}
 
 	/**

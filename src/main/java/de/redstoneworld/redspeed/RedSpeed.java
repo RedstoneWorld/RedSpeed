@@ -32,11 +32,10 @@ public class RedSpeed extends JavaPlugin {
 	/**
 	 * This method read the specific messages in the config.yml and replace the
 	 * minecraft color codes to a valid sign.
-	 * 
+	 *
 	 * @param key YAML key
-	 * @param String placeholder without "%"
-	 * @param value value for the placeholder
-	 * 
+	 * @param args placeholder without "%" and value for the placeholder
+	 *
 	 * @return the config messages (String)
 	 */
 	String getLang(String key, String... args) {

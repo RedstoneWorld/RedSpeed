@@ -35,7 +35,7 @@ public class WalkSpeedCommand {
 	// normal player commands:
 	
 	/**
-	 * This method allow to SHOW the own walk speed value, if the executer has the permission to
+	 * This method allow to SHOW the own walk speed value, if the executor has the permission to
 	 * use the command.
 	 */
 	public boolean sendWalkSpeedMsg() {
@@ -67,7 +67,7 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own walk speed value to the requested value, if the executer
+	 * This method allow to SET the own walk speed value to the requested value, if the executor
 	 * has the permission to use the command.
 	 * 
 	 * @param speed the requested walk speed value
@@ -87,7 +87,7 @@ public class WalkSpeedCommand {
 	// admin commands:
 	
 	/**
-	 * This method allow to SHOW the walk speed value of another player, if the executer has
+	 * This method allow to SHOW the walk speed value of another player, if the executor has
 	 * the permission to use the command. The target player must be online.
 	 */
 	public boolean sendWalkSpeedMsgOther() {
@@ -123,7 +123,7 @@ public class WalkSpeedCommand {
 
 	/**
 	 * This method allow to SET the walk speed value of another player to the requested value,
-	 * if the executer has the permission to use the command. The target player must be online.
+	 * if the executor has the permission to use the command. The target player must be online.
 	 * 
 	 * @param speed the requested walk speed value
 	 */
@@ -198,7 +198,7 @@ public class WalkSpeedCommand {
 	 * This method check the value of requested walk speed value.
 	 * 
 	 * @param speed the requested walk speed value
-	 * @return "true" if the requested speed value is correct (inside of the allowed range)
+	 * @return "true" if the requested speed value is correct (inside in the allowed range)
 	 */
 	public boolean checkValue(float speed) {
 		if ( speed < 0.0 || speed > MAX_WALK_SPEED ) {

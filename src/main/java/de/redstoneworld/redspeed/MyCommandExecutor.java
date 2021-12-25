@@ -15,7 +15,7 @@ public class MyCommandExecutor implements CommandExecutor {
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-		/**
+		/*
 		 * This command allow to show / edit the walk player speed.
 		 * 
 		 * ingame command syntax: /redwalkspeed [walk-speed | 'back'] [player]
@@ -100,7 +100,7 @@ public class MyCommandExecutor implements CommandExecutor {
 
 		}
 
-		/**
+		/*
 		 * This command allow to show / edit the fly player speed.
 		 * 
 		 * ingame command syntax: /redflyspeed [fly-speed | 'back'] [player]

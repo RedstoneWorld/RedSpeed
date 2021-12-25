@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class MyCommandExecutor implements CommandExecutor {
 
@@ -13,7 +14,7 @@ public class MyCommandExecutor implements CommandExecutor {
 		this.plugin = plugin;
 	}
 
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+	public boolean onCommand(@NotNull CommandSender sender, Command cmd, @NotNull String label, String[] args) {
 
 		/*
 		 * This command allow to show / edit the walk player speed.
@@ -23,7 +24,7 @@ public class MyCommandExecutor implements CommandExecutor {
 
 		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
 			
-			Player player = null;
+			Player player;
 			if (!(sender instanceof Player)) {
 				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
 				return true;
@@ -108,7 +109,7 @@ public class MyCommandExecutor implements CommandExecutor {
 
 		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
 			
-			Player player = null;
+			Player player;
 			if (!(sender instanceof Player)) {
 				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
 				return true;

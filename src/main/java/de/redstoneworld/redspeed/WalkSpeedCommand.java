@@ -24,7 +24,7 @@ public class WalkSpeedCommand {
 	/**
 	 * @param plugin the plugin
 	 * @param sender the player there execute the command
-	 * @param commandArgs additional command arguments (= the target player)
+	 * @param target additional command arguments (= the target player)
 	 */
 	public WalkSpeedCommand(RedSpeed plugin, Player sender, String target) {
 		this.plugin = plugin;

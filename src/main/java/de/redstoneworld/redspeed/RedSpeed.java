@@ -16,8 +16,10 @@ public class RedSpeed extends JavaPlugin {
 	private MyCommandExecutor cmdExecutor;
 
 	public void onEnable() {
-		
+
+		// save default config and load config
 		saveDefaultConfig();
+		reloadConfig();
 		
 		cmdExecutor = new MyCommandExecutor(this);
 		// the synonym commands are defined with the plugin.yml

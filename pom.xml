@@ -3,22 +3,34 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>de.redstoneworld.redspeed</groupId>
   <artifactId>redspeed</artifactId>
-  <version>1.0.0</version>
-  
-  <repositories>
-    <repository>
-      <id>papermc</id>
-      <url>https://papermc.io/repo/repository/maven-public/</url>
-    </repository>
-  </repositories>
-  
-  <dependencies>
-	<dependency>
-	    <groupId>com.destroystokyo.paper</groupId>
-	    <artifactId>paper-api</artifactId>
-	    <version>1.16.5-R0.1-SNAPSHOT</version>
-	    <scope>provided</scope>
-	</dependency>
-  </dependencies>
+  <version>1.0.1</version>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.destroystokyo.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 
 </project>

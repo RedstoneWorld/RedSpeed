@@ -1,6 +1,6 @@
 name: RedSpeed
 main: de.redstoneworld.redspeed.RedSpeed
-version: 0.0.4
+version: 1.0.1
 api-version: 1.17
 description: A small speed plugin to change the walk- and fly-speed for yourself or and other player.
 authors: [RedstoneFuture]

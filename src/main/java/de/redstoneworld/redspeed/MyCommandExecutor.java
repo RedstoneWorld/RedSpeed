@@ -51,9 +51,8 @@ public class MyCommandExecutor implements CommandExecutor {
 
 				else {
 					// e.g. "/wspeed 1"
-					if (matchSpeedArgument(args[0])) {
-						String matchedString = (args[0]).replaceFirst(",", ".");
-						float speed = Float.parseFloat(matchedString);
+					if (isSpeedArgument(args[0])) {
+						float speed = getSpeedValue(args[0]);
 
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
 						walkSpeedCmd.setSpecificSpeed(speed);
@@ -81,9 +80,8 @@ public class MyCommandExecutor implements CommandExecutor {
 
 				else {
 					// e.g. "/wspeed 1 TestUser"
-					if (matchSpeedArgument(args[0])) {
-						String matchedString = (args[0]).replaceFirst(",", ".");
-						float speed = Float.parseFloat(matchedString);
+					if (isSpeedArgument(args[0])) {
+						float speed = getSpeedValue(args[0]);
 
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player, args[1]);
 						walkSpeedCmd.setSpecificSpeedOther(speed);
@@ -136,9 +134,8 @@ public class MyCommandExecutor implements CommandExecutor {
 
 				else {
 					// e.g. "/fspeed 1"
-					if (matchSpeedArgument(args[0])) {
-						String matchedString = (args[0]).replaceFirst(",", ".");
-						float speed = Float.parseFloat(matchedString);
+					if (isSpeedArgument(args[0])) {
+						float speed = getSpeedValue(args[0]);
 
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
 						flySpeedCmd.setSpecificSpeed(speed);
@@ -166,9 +163,8 @@ public class MyCommandExecutor implements CommandExecutor {
 
 				else {
 					// e.g. "/fspeed 1 TestUser"
-					if (matchSpeedArgument(args[0])) {
-						String matchedString = (args[0]).replaceFirst(",", ".");
-						float speed = Float.parseFloat(matchedString);
+					if (isSpeedArgument(args[0])) {
+						float speed = getSpeedValue(args[0]);
 
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player, args[1]);
 						flySpeedCmd.setSpecificSpeedOther(speed);
@@ -193,14 +189,40 @@ public class MyCommandExecutor implements CommandExecutor {
 	/**
 	 * This method validate the input string and decide between a string (= playername)
 	 * and a number (= speed value).
-	 * 
+	 *
 	 * @return 'true' if the input is a rationale number
 	 */
-	public boolean matchSpeedArgument(String cmdInput) {
-		if (cmdInput.matches("^[-]?[0-9]+([\\.,][0-9])?[0-9]*$")) {
+	public boolean isSpeedArgument(String cmdInput) {
+
+		if (cmdInput.matches("^[-\\+]?[0-9]*[\\.,]?[0-9]+$")) {
 			return true;
 		}
+
 		return false;
+
+	}
+
+
+	/**
+	 * This method reforms the speed spellings and convert it to a float number.
+	 *
+	 * @param cmdInput the decimal value argument with one of all supported spellings
+	 * @return (float) the decimal value
+	 */
+	public float getSpeedValue(String cmdInput) {
+
+		// replace decimal separator
+		cmdInput = cmdInput.replace(",", ".");
+
+		// replace decimal input as short write-style without zero at beginning
+		// (e.g. "/speed .4" --> "/speed 0.4")
+		if (cmdInput.matches("^[-\\+]?[\\.,][0-9]+$")) {
+			cmdInput = cmdInput.replace(".", "0.");
+		}
+
+		// convert the string to a float number
+		return Float.parseFloat(cmdInput);
+
 	}
 
 }

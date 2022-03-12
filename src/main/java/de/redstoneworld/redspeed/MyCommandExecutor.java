@@ -237,61 +237,77 @@ public class MyCommandExecutor implements TabExecutor {
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
 
 		Player player;
-		if (!(sender instanceof Player)) {
-			return null;
-		}
-
-		player = (Player) sender;
 		List<String> completions = new ArrayList<>();
 		final List<String> commands = new ArrayList<>();
 
 		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
 
-			if (args.length == 1) {
-				if (player.hasPermission("rwm.redspeed.wspeed.set")) {
-					commands.add("back");
-				}
-				if (player.hasPermission("rwm.redspeed.wspeed.see.other")) {
-					Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
-				}
-				StringUtil.copyPartialMatches(args[0], commands, completions);
-			}
+			// Console
+			if (!(sender instanceof Player)) {
+				return null;
 
-			if ((args.length == 2)) {
-				if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
-					if (player.hasPermission("rwm.redspeed.wspeed.set.other")) {
+			} else {
+
+				// normal player
+				player = (Player) sender;
+
+				if (args.length == 1) {
+					if (player.hasPermission("rwm.redspeed.wspeed.set")) {
+						commands.add("back");
+					}
+					if (player.hasPermission("rwm.redspeed.wspeed.see.other")) {
 						Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
 					}
+					StringUtil.copyPartialMatches(args[0], commands, completions);
 				}
-				StringUtil.copyPartialMatches(args[1], commands, completions);
+
+				if ((args.length == 2)) {
+					if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
+						if (player.hasPermission("rwm.redspeed.wspeed.set.other")) {
+							Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+						}
+					}
+					StringUtil.copyPartialMatches(args[1], commands, completions);
+				}
+
 			}
 
 		}
 
 		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
 
-			if (args.length == 1) {
-				if (player.hasPermission("rwm.redspeed.fspeed.set")) {
-					commands.add("back");
-				}
-				if (player.hasPermission("rwm.redspeed.fspeed.see.other")) {
-					Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
-				}
-				StringUtil.copyPartialMatches(args[0], commands, completions);
-			}
+			// Console
+			if (!(sender instanceof Player)) {
+				return null;
 
-			if (args.length == 2) {
-				if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
-					if (player.hasPermission("rwm.redspeed.fspeed.set.other")) {
+			} else {
+
+				// normal player
+				player = (Player) sender;
+
+				if (args.length == 1) {
+					if (player.hasPermission("rwm.redspeed.fspeed.set")) {
+						commands.add("back");
+					}
+					if (player.hasPermission("rwm.redspeed.fspeed.see.other")) {
 						Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
 					}
+					StringUtil.copyPartialMatches(args[0], commands, completions);
 				}
-				StringUtil.copyPartialMatches(args[1], commands, completions);
+
+				if (args.length == 2) {
+					if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
+						if (player.hasPermission("rwm.redspeed.fspeed.set.other")) {
+							Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+						}
+					}
+					StringUtil.copyPartialMatches(args[1], commands, completions);
+				}
+
 			}
 
 		}
 
-		Collections.sort(completions);
 		return completions;
 	}
 

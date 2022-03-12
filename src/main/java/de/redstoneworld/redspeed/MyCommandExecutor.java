@@ -1,12 +1,19 @@
 package de.redstoneworld.redspeed;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-public class MyCommandExecutor implements CommandExecutor {
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class MyCommandExecutor implements TabExecutor {
 
 	protected final RedSpeed plugin;
 
@@ -223,6 +230,69 @@ public class MyCommandExecutor implements CommandExecutor {
 		// convert the string to a float number
 		return Float.parseFloat(cmdInput);
 
+	}
+
+
+	@Override
+	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
+
+		Player player;
+		if (!(sender instanceof Player)) {
+			return null;
+		}
+
+		player = (Player) sender;
+		List<String> completions = new ArrayList<>();
+		final List<String> commands = new ArrayList<>();
+
+		if (cmd.getName().equalsIgnoreCase("redwalkspeed")) {
+
+			if (args.length == 1) {
+				if (player.hasPermission("rwm.redspeed.wspeed.set")) {
+					commands.add("back");
+				}
+				if (player.hasPermission("rwm.redspeed.wspeed.see.other")) {
+					Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+				}
+				StringUtil.copyPartialMatches(args[0], commands, completions);
+			}
+
+			if ((args.length == 2)) {
+				if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
+					if (player.hasPermission("rwm.redspeed.wspeed.set.other")) {
+						Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+					}
+				}
+				StringUtil.copyPartialMatches(args[1], commands, completions);
+			}
+
+		}
+
+		if (cmd.getName().equalsIgnoreCase("redflyspeed")) {
+
+			if (args.length == 1) {
+				if (player.hasPermission("rwm.redspeed.fspeed.set")) {
+					commands.add("back");
+				}
+				if (player.hasPermission("rwm.redspeed.fspeed.see.other")) {
+					Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+				}
+				StringUtil.copyPartialMatches(args[0], commands, completions);
+			}
+
+			if (args.length == 2) {
+				if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
+					if (player.hasPermission("rwm.redspeed.fspeed.set.other")) {
+						Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));
+					}
+				}
+				StringUtil.copyPartialMatches(args[1], commands, completions);
+			}
+
+		}
+
+		Collections.sort(completions);
+		return completions;
 	}
 
 }

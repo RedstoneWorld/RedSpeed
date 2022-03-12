@@ -32,8 +32,8 @@ public class RedSpeed extends JavaPlugin {
 	}
 
 	/**
-	 * This method read the specific messages in the config.yml and replace the
-	 * minecraft color codes to a valid sign.
+	 * This method reads the specific messages in config.yml and replaces
+	 * the minecraft color codes with a valid character.
 	 *
 	 * @param key YAML key
 	 * @param args placeholder without "%" and value for the placeholder

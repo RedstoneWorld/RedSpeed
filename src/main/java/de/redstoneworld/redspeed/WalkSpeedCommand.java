@@ -35,7 +35,7 @@ public class WalkSpeedCommand {
 	// normal player commands:
 	
 	/**
-	 * This method allow to SHOW the own walk speed value, if the executor has the permission to
+	 * This method allows to SHOW the own walk speed value, if the executor has the permission to
 	 * use the command.
 	 */
 	public boolean sendWalkSpeedMsg() {
@@ -51,7 +51,7 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own walk speed value back to the default value, if the executer
+	 * This method allows to SET the own walk speed value back to the default value, if the executer
 	 * has the permission to use the command.
 	 */
 	public boolean setDefaultSpeed() {
@@ -67,7 +67,7 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own walk speed value to the requested value, if the executor
+	 * This method allows to SET the own walk speed value to the requested value, if the executor
 	 * has the permission to use the command.
 	 * 
 	 * @param speed the requested walk speed value
@@ -87,7 +87,7 @@ public class WalkSpeedCommand {
 	// admin commands:
 	
 	/**
-	 * This method allow to SHOW the walk speed value of another player, if the executor has
+	 * This method allows to SHOW the walk speed value of another player, if the executor has
 	 * the permission to use the command. The target player must be online.
 	 */
 	public boolean sendWalkSpeedMsgOther() {
@@ -103,8 +103,8 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the walk speed value of another player back to the default value,
-	 * if the executer has the permission to use the command. The target player must be online.
+	 * This method allows to SET the walk speed value of another player back to the default value,
+	 * if the executor has the permission to use the command. The target player must be online.
 	 */
 	public boolean setDefaultSpeedOther() {
 
@@ -122,7 +122,7 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the walk speed value of another player to the requested value,
+	 * This method allows to SET the walk speed value of another player to the requested value,
 	 * if the executor has the permission to use the command. The target player must be online.
 	 * 
 	 * @param speed the requested walk speed value
@@ -181,7 +181,7 @@ public class WalkSpeedCommand {
 	}
 	
 	/**
-	 * This method check if the player is online on the server.
+	 * This method checks if the player is online on the server.
 	 * 
 	 * @return "true" if the player is online on the server
 	 */
@@ -195,7 +195,7 @@ public class WalkSpeedCommand {
 	}
 	
 	/**
-	 * This method check the value of requested walk speed value.
+	 * This method checks the value of requested walk speed value.
 	 * 
 	 * @param speed the requested walk speed value
 	 * @return "true" if the requested speed value is correct (inside in the allowed range)

@@ -35,7 +35,7 @@ public class FlySpeedCommand {
 	// normal player commands:
 
 	/**
-	 * This method allow to SHOW the own fly speed value, if the executor has the permission to
+	 * This method allows to SHOW the own fly speed value, if the executor has the permission to
 	 * use the command.
 	 */
 	public boolean sendFlySpeedMsg() {
@@ -51,7 +51,7 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the own fly speed value back to the default value, if the executor
+	 * This method allows to SET the own fly speed value back to the default value, if the executor
 	 * has the permission to use the command.
 	 */
 	public boolean setDefaultSpeed() {
@@ -67,7 +67,7 @@ public class FlySpeedCommand {
 	}
 	
 	/**
-	 * This method allow to SET the own fly speed value to the requested value, if the executor
+	 * This method allows to SET the own fly speed value to the requested value, if the executor
 	 * has the permission to use the command.
 	 * 
 	 * @param speed the requested fly speed value
@@ -87,7 +87,7 @@ public class FlySpeedCommand {
 	// admin commands:
 	
 	/**
-	 * This method allow to SHOW the fly speed value of another player, if the executor has
+	 * This method allows to SHOW the fly speed value of another player, if the executor has
 	 * the permission to use the command. The target player must be online.
 	 */
 	public boolean sendFlySpeedMsgOther() {
@@ -104,7 +104,7 @@ public class FlySpeedCommand {
 	}
 	
 	/**
-	 * This method allow to SET the fly speed value of another player back to the default value,
+	 * This method allows to SET the fly speed value of another player back to the default value,
 	 * if the executor has the permission to use the command. The target player must be online.
 	 */
 	public boolean setDefaultSpeedOther() {
@@ -124,7 +124,7 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allow to SET the fly speed value of another player to the requested value,
+	 * This method allows to SET the fly speed value of another player to the requested value,
 	 * if the executor has the permission to use the command. The target player must be online.
 	 * 
 	 * @param speed the requested fly speed value
@@ -185,7 +185,7 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method check if the player is online on the server.
+	 * This method checks if the player is online on the server.
 	 * 
 	 * @return "true" if the player is online on the server
 	 */
@@ -199,7 +199,7 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method check the value of requested fly speed value.
+	 * This method checks the value of requested fly speed value.
 	 * 
 	 * @param speed the requested fly speed value
 	 * @return "true" if the requested speed value is correct (inside in the allowed range)

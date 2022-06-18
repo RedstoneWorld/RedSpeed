@@ -10,7 +10,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class MyCommandExecutor implements TabExecutor {
@@ -95,13 +94,13 @@ public class MyCommandExecutor implements TabExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
+						WalkSpeedCommand.sendSyntaxHelpMessage(plugin, player);
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
+			WalkSpeedCommand.sendSyntaxHelpMessage(plugin, player);
 			return true;
 
 		}
@@ -178,13 +177,13 @@ public class MyCommandExecutor implements TabExecutor {
 						return true;
 
 					} else {
-						player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
+						FlySpeedCommand.sendSyntaxHelpMessage(plugin, player);
 						return true;
 					}
 				}
 			}
 
-			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
+			FlySpeedCommand.sendSyntaxHelpMessage(plugin, player);
 			return true;
 
 		}

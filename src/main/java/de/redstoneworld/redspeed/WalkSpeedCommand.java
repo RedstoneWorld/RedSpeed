@@ -143,19 +143,19 @@ public class WalkSpeedCommand {
 	}
 
 	/**
-	 * This method allows to SET the walk speed command syntax if the player has the
+	 * This method allows to get the walk speed command syntax if the player has the
 	 * basic use permission.
 	 */
-	public static void sendSyntaxHelpMessage(RedSpeed plugin, Player player) {
+	public void sendSyntaxHelpMessage() {
 
-		if (hasUsePermission(plugin, player)) {
+		if (hasUsePermission()) {
 			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.wspeed"));
 		}
 	}
 	
 	// permission check:
 
-	public static boolean hasUsePermission(RedSpeed plugin, Player player) {
+	public boolean hasUsePermission() {
 
 		if (!player.hasPermission("rwm.redspeed.wspeed.use")) {
 			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));

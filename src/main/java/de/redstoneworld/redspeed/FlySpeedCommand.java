@@ -147,19 +147,19 @@ public class FlySpeedCommand {
 	}
 
 	/**
-	 * This method allows to SET the fly speed command syntax if the player has the
+	 * This method allows to get the fly speed command syntax if the player has the
 	 * basic use permission.
 	 */
-	public static void sendSyntaxHelpMessage(RedSpeed plugin, Player player) {
+	public void sendSyntaxHelpMessage() {
 
-		if (hasUsePermission(plugin, player)) {
+		if (hasUsePermission()) {
 			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError.fspeed"));
 		}
 	}
 
 	// permission check:
 
-	public static boolean hasUsePermission(RedSpeed plugin, Player player) {
+	public boolean hasUsePermission() {
 
 		if (!player.hasPermission("rwm.redspeed.fspeed.use")) {
 			player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));

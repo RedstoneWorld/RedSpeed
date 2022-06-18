@@ -94,13 +94,15 @@ public class MyCommandExecutor implements TabExecutor {
 						return true;
 
 					} else {
-						WalkSpeedCommand.sendSyntaxHelpMessage(plugin, player);
+						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
+						walkSpeedCmd.sendSyntaxHelpMessage();
 						return true;
 					}
 				}
 			}
 
-			WalkSpeedCommand.sendSyntaxHelpMessage(plugin, player);
+			WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
+			walkSpeedCmd.sendSyntaxHelpMessage();
 			return true;
 
 		}
@@ -177,13 +179,15 @@ public class MyCommandExecutor implements TabExecutor {
 						return true;
 
 					} else {
-						FlySpeedCommand.sendSyntaxHelpMessage(plugin, player);
+						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
+						flySpeedCmd.sendSyntaxHelpMessage();
 						return true;
 					}
 				}
 			}
 
-			FlySpeedCommand.sendSyntaxHelpMessage(plugin, player);
+			FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
+			flySpeedCmd.sendSyntaxHelpMessage();
 			return true;
 
 		}

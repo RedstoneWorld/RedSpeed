@@ -12,11 +12,11 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCommandExecutor implements TabExecutor {
+public class Commands implements TabExecutor {
 
 	protected final RedSpeed plugin;
 
-	public MyCommandExecutor(RedSpeed plugin) {
+	public Commands(RedSpeed plugin) {
 		this.plugin = plugin;
 	}
 

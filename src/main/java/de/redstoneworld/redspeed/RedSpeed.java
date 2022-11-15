@@ -7,7 +7,7 @@
  * rwm.redspeed.wspeed.(see|set).other
  * rwm.redspeed.fspeed.(use|see|set)
  * rwm.redspeed.fspeed.(see|set).other
- *
+ * 
  * @author Robert Rauh alias RedstoneFuture
  */
 
@@ -19,7 +19,7 @@ import net.md_5.bungee.api.ChatColor;
 
 public class RedSpeed extends JavaPlugin {
 
-	private MyCommandExecutor cmdExecutor;
+	private Commands cmdExecutor;
 
 	public void onEnable() {
 
@@ -27,7 +27,7 @@ public class RedSpeed extends JavaPlugin {
 		saveDefaultConfig();
 		reloadConfig();
 		
-		cmdExecutor = new MyCommandExecutor(this);
+		cmdExecutor = new Commands(this);
 		// the synonym commands are defined with the plugin.yml
 		getCommand("redwalkspeed").setExecutor(cmdExecutor);
 		getCommand("redflyspeed").setExecutor(cmdExecutor);

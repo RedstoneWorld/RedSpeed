@@ -53,9 +53,8 @@ public class Commands implements TabExecutor {
 					WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
 					walkSpeedCmd.setDefaultSpeed();
 					return true;
-				}
 
-				else {
+				} else {
 					// e.g. "/wspeed 1"
 					if (isSpeedArgument(args[0])) {
 						float speed = getSpeedValue(args[0]);
@@ -82,9 +81,8 @@ public class Commands implements TabExecutor {
 					WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player, args[1]);
 					walkSpeedCmd.setDefaultSpeedOther();
 					return true;
-				}
 
-				else {
+				} else {
 					// e.g. "/wspeed 1 TestUser"
 					if (isSpeedArgument(args[0])) {
 						float speed = getSpeedValue(args[0]);
@@ -138,9 +136,8 @@ public class Commands implements TabExecutor {
 					FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
 					flySpeedCmd.setDefaultSpeed();
 					return true;
-				}
 
-				else {
+				} else {
 					// e.g. "/fspeed 1"
 					if (isSpeedArgument(args[0])) {
 						float speed = getSpeedValue(args[0]);
@@ -167,9 +164,8 @@ public class Commands implements TabExecutor {
 					FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player, args[1]);
 					flySpeedCmd.setDefaultSpeedOther();
 					return true;
-				}
 
-				else {
+				} else {
 					// e.g. "/fspeed 1 TestUser"
 					if (isSpeedArgument(args[0])) {
 						float speed = getSpeedValue(args[0]);
@@ -202,7 +198,7 @@ public class Commands implements TabExecutor {
 	 *
 	 * @return 'true' if the input is a rationale number
 	 */
-	public boolean isSpeedArgument(String cmdInput) {
+	private boolean isSpeedArgument(String cmdInput) {
 
 		if (cmdInput.matches("^[-\\+]?[0-9]*[\\.,]?[0-9]+$")) {
 			return true;
@@ -219,7 +215,7 @@ public class Commands implements TabExecutor {
 	 * @param cmdInput the decimal value argument with one of all supported spellings
 	 * @return (float) the decimal value
 	 */
-	public float getSpeedValue(String cmdInput) {
+	private float getSpeedValue(String cmdInput) {
 
 		// replace decimal separator
 		cmdInput = cmdInput.replace(",", ".");
@@ -264,7 +260,7 @@ public class Commands implements TabExecutor {
 					StringUtil.copyPartialMatches(args[0], commands, completions);
 				}
 
-				if ((args.length == 2)) {
+				if (args.length == 2) {
 					if ((isSpeedArgument(args[0])) || args[0].equalsIgnoreCase("back") || args[0].equalsIgnoreCase("default")) {
 						if (player.hasPermission("rwm.redspeed.wspeed.set.other")) {
 							Bukkit.getOnlinePlayers().forEach(onlinePlayer -> commands.add(onlinePlayer.getName()));

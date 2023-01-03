@@ -42,7 +42,7 @@ public class Commands implements TabExecutor {
 			// without arguments --> show walk-speed value
 			if (args.length == 0) {
 				WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
-				walkSpeedCmd.sendWalkSpeedMsg();
+				walkSpeedCmd.sendSpeedMsg();
 				return true;
 			}
 
@@ -67,7 +67,7 @@ public class Commands implements TabExecutor {
 						// e.g. "/wspeed TestUser"
 						// if x is a string (player name) = admin commands
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player, args[0]);
-						walkSpeedCmd.sendWalkSpeedMsgOther();
+						walkSpeedCmd.sendSpeedMsgOther();
 						return true;
 					}
 				}
@@ -125,7 +125,7 @@ public class Commands implements TabExecutor {
 			// without arguments --> show fly-speed value
 			if (args.length == 0) {
 				FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
-				flySpeedCmd.sendFlySpeedMsg();
+				flySpeedCmd.sendSpeedMsg();
 				return true;
 			}
 
@@ -150,7 +150,7 @@ public class Commands implements TabExecutor {
 						// "/fspeed TestUser"
 						// if x is a string (player name) = admin commands
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player, args[0]);
-						flySpeedCmd.sendFlySpeedMsgOther();
+						flySpeedCmd.sendSpeedMsgOther();
 						return true;
 					}
 				}

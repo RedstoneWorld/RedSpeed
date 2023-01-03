@@ -224,7 +224,7 @@ public abstract class SpeedCommand {
         }
         return true;
     }
-
+    
     /**
      * This method checks the value of requested walk / fly speed value.
      *
@@ -233,7 +233,12 @@ public abstract class SpeedCommand {
      */
     private boolean checkValue(float speed) {
         if (speed < 0.0 || speed > maxSpeed) {
-            player.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue." + speedType));
+
+            if (sender != null) {
+                sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue." + speedType));
+            } else {
+                player.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue." + speedType));
+            }
             return false;
         }
         return true;

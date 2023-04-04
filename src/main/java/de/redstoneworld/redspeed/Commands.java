@@ -251,7 +251,7 @@ public class Commands implements TabExecutor {
 				player = (Player) sender;
 
 				if (args.length == 1) {
-					if (player.hasPermission("rwm.redspeed.wspeed.set")) {
+					if ((player.hasPermission("rwm.redspeed.wspeed.set")) || (player.hasPermission("rwm.redspeed.wspeed.set.other"))) {
 						commands.add("back");
 					}
 					if (player.hasPermission("rwm.redspeed.wspeed.see.other")) {
@@ -285,7 +285,7 @@ public class Commands implements TabExecutor {
 				player = (Player) sender;
 
 				if (args.length == 1) {
-					if (player.hasPermission("rwm.redspeed.fspeed.set")) {
+					if ((player.hasPermission("rwm.redspeed.fspeed.set")) || (player.hasPermission("rwm.redspeed.fspeed.set.other"))) {
 						commands.add("back");
 					}
 					if (player.hasPermission("rwm.redspeed.fspeed.see.other")) {

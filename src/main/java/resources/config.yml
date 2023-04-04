@@ -1,24 +1,24 @@
 messages:
-  prefix: "&8[&4Red&fSpeed&8]&f: "
-  noPermission: "&cDu hast &4keine Berechtigung &cdafür."
-  playerNotFound: "&cEs ist &4kein Spieler &cmit dem Namen &4%name% &conline."
-  onlyIngame: "&cDieser Befehl kann &4nur Ingame ausgeführt werden&c."
+  prefix: '&8[&4Red&fSpeed&8]&f: '
+  noPermission: '&cDu hast &4keine Berechtigung &cdafür.'
+  playerNotFound: '&cEs ist &4kein Spieler &cmit dem Namen &7%name% &conline.'
+  onlyIngame: '&cDieser Befehl kann &4nur Ingame ausgeführt werden&c.'
   syntaxError:
-    wspeed: "Schreibe &7/wspeed <ggf. Geh-Geschwindigkeit von 0 bis 1 oder ''back'' zum Zurücksetzen der Geschwindigkeit>"
-    fspeed: "Schreibe &7/fspeed <ggf. Flug-Geschwindigkeit von 0 bis 1 oder ''back'' zum Zurücksetzen der Geschwindigkeit>"
+    wspeed: 'Schreibe &7/wspeed <ggf. Geh-Geschwindigkeit von 0 bis 1 oder "back" zum Zurücksetzen der Geschwindigkeit>'
+    fspeed: 'Schreibe &7/fspeed <ggf. Flug-Geschwindigkeit von 0 bis 1 oder "back" zum Zurücksetzen der Geschwindigkeit>'
   wrongValue:
-    wspeed: "&cDer &4erlaubte Wertebereich &cfür die Geh-Geschwindigkeit &4geht von bei 0 - 1&c."
-    fspeed: "&cDer &4erlaubte Wertebereich &cfür die Flug-Geschwindigkeit &4geht von bei 0 - 1&c."
+    wspeed: '&cDer &4erlaubte Wertebereich &cfür die Geh-Geschwindigkeit &4geht von bei 0 - 1&c.'
+    fspeed: '&cDer &4erlaubte Wertebereich &cfür die Flug-Geschwindigkeit &4geht von bei 0 - 1&c.'
   show:
-    wspeed-own: "&fDeine &dGeh-Geschwindigkeit &fbeträgt &7%wspeed%&f. &7(Standart-Wert: &80.2&7)"
-    wspeed-other: "&fDie &dGeh-Geschwindigkeit &fvon &7%name% &fbeträgt &7%wspeed%&f. &7(Standart-Wert: &80.2&7)"
-    fspeed-own: "&fDeine &dFlug-Geschwindigkeit &fbeträgt &7%fspeed%&f. &7(Standart-Wert: &80.1&7)"
-    fspeed-other: "&fDie &dFlug-Geschwindigkeit &fvon &7%name% &fbeträgt &7%fspeed%&f. &7(Standart-Wert: &80.1&7)"
+    wspeed-own: '&fDeine &dGeh-Geschwindigkeit &fbeträgt &7%wspeed%&f. &7(Standart-Wert: &80.2&7)'
+    wspeed-other: '&fDie &dGeh-Geschwindigkeit &fvon &7%name% &fbeträgt &7%wspeed%&f. &7(Standart-Wert: &80.2&7)'
+    fspeed-own: '&fDeine &dFlug-Geschwindigkeit &fbeträgt &7%fspeed%&f. &7(Standart-Wert: &80.1&7)'
+    fspeed-other: '&fDie &dFlug-Geschwindigkeit &fvon &7%name% &fbeträgt &7%fspeed%&f. &7(Standart-Wert: &80.1&7)'
   success-wspeed:
-    ownDefaultValue: "&fDeine &dGeh-Geschwindigkeit &fwurde wieder zurück auf den &dStandart-Wert &fvon &70.2 &fgesetzt."
-    ownSpecificValue: "&fDeine &dGeh-Geschwindigkeit &fwurde auf &7%wspeed% &fgesetzt. &7(Standart-Wert: &80.2&7)"
-    other: "Die &dGeh-Geschwindigkeit &fvon &7%name% &fwurde auf &7%wspeed% &fgesetzt! &7(Standart-Wert: &80.2&7)"
+    ownDefaultValue: '&fDeine &dGeh-Geschwindigkeit &fwurde wieder zurück auf den &dStandart-Wert &fvon &70.2 &fgesetzt.'
+    ownSpecificValue: '&fDeine &dGeh-Geschwindigkeit &fwurde auf &7%wspeed% &fgesetzt. &7(Standart-Wert: &80.2&7)'
+    other: 'Die &dGeh-Geschwindigkeit &fvon &7%name% &fwurde auf &7%wspeed% &fgesetzt! &7(Standart-Wert: &80.2&7)'
   success-fspeed:
-    ownDefaultValue: "&fDeine &dFlug-Geschwindigkeit &fwurde wieder zurück auf den &dStandart-Wert &fvon &70.1 &fgesetzt."
-    ownSpecificValue: "&fDeine &dFlug-Geschwindigkeit &fwurde auf &7%fspeed% &fgesetzt. &7(Standart-Wert: &80.1&7)"
-    other: "Die &dFlug-Geschwindigkeit &fvon &7%name% &fwurde auf &7%fspeed% &fgesetzt! &7(Standart-Wert: &80.1&7)"
+    ownDefaultValue: '&fDeine &dFlug-Geschwindigkeit &fwurde wieder zurück auf den &dStandart-Wert &fvon &70.1 &fgesetzt.'
+    ownSpecificValue: '&fDeine &dFlug-Geschwindigkeit &fwurde auf &7%fspeed% &fgesetzt. &7(Standart-Wert: &80.1&7)'
+    other: 'Die &dFlug-Geschwindigkeit &fvon &7%name% &fwurde auf &7%fspeed% &fgesetzt! &7(Standart-Wert: &80.1&7)'

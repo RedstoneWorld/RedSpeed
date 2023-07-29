@@ -226,7 +226,7 @@ public abstract class SpeedCommand {
     }
     
     /**
-     * This method checks the value of requested walk / fly speed value.
+     * This method checks the value of requested walk / fly speed.
      *
      * @param speed the requested walk / fly speed value
      * @return "true" if the requested speed value is correct (inside in the allowed range)

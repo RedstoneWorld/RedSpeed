@@ -210,7 +210,7 @@ public class Commands implements TabExecutor {
 
 
 	/**
-	 * This method reforms the speed spellings and convert it to a float number.
+	 * This method reforms the speed spelling and convert it to a float number.
 	 *
 	 * @param cmdInput the decimal value argument with one of all supported spellings
 	 * @return (float) the decimal value

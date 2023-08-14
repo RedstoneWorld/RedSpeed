@@ -219,7 +219,7 @@ public abstract class SpeedCommand {
         this.player = plugin.getServer().getPlayerExact(targetName);
         
         if (this.player == null) {
-            sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("player-not-found", "name", targetName));
+            sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("playerNotFound", "name", targetName));
             return false;
         }
         return true;

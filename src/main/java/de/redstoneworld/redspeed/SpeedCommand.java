@@ -163,6 +163,65 @@ public abstract class SpeedCommand {
         }
     }
 
+    /**
+     * This method checks if the player is online on the server.
+     *
+     * @return "true" if the player is online on the server
+     */
+    private boolean isOnline() {
+        this.player = plugin.getServer().getPlayerExact(targetName);
+
+        if (this.player == null) {
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("playerNotFound", "name", targetName));
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * This method checks the value of requested walk / fly speed.
+     *
+     * @param speed the requested walk / fly speed value
+     * @return "true" if the requested speed value is correct (inside in the allowed range)
+     */
+    private boolean checkValue(float speed) {
+        if (speed < 0.0 || speed > maxSpeed) {
+
+            if (sender != null) {
+                sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
+            } else {
+                player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
+            }
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * This method sets the default values for the specific type of speed.
+     */
+    public void setDefaultValues() {
+    }
+
+    /**
+     * This method sets the new speed value for the player on the server.
+     *
+     * @param player (Player) the target player
+     * @param speed (float) the new speed value
+     */
+    protected void setSpeed(Player player, float speed) {
+    }
+
+    /**
+     * This method gets the current speed value of the player on the server.
+     *
+     * @param player (Player) the target player
+     * @return the current speed value
+     */
+    protected float getSpeed(Player player) {
+        return 0;
+    }
+    
     // permission check:
 
     public boolean hasUsePermission() {
@@ -208,65 +267,6 @@ public abstract class SpeedCommand {
             return false;
         }
         return true;
-    }
-
-    /**
-     * This method checks if the player is online on the server.
-     *
-     * @return "true" if the player is online on the server
-     */
-    private boolean isOnline() {
-        this.player = plugin.getServer().getPlayerExact(targetName);
-        
-        if (this.player == null) {
-            sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("playerNotFound", "name", targetName));
-            return false;
-        }
-        return true;
-    }
-    
-    /**
-     * This method checks the value of requested walk / fly speed.
-     *
-     * @param speed the requested walk / fly speed value
-     * @return "true" if the requested speed value is correct (inside in the allowed range)
-     */
-    private boolean checkValue(float speed) {
-        if (speed < 0.0 || speed > maxSpeed) {
-
-            if (sender != null) {
-                sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
-            } else {
-                player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
-            }
-            return false;
-        }
-        return true;
-    }
-    
-    /**
-     * This method sets the default values for the specific type of speed.
-     */
-    public void setDefaultValues() {
-    }
-
-    /**
-     * This method sets the new speed value for the player on the server.
-     * 
-     * @param player (Player) the target player
-     * @param speed (float) the new speed value
-     */
-    protected void setSpeed(Player player, float speed) {
-    }
-
-    /**
-     * This method gets the current speed value of the player on the server.
-     *
-     * @param player (Player) the target player
-     * @return the current speed value
-     */
-    protected float getSpeed(Player player) {
-        return 0;
     }
     
 }

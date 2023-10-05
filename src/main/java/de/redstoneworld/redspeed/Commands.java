@@ -1,5 +1,7 @@
 package de.redstoneworld.redspeed;
 
+import de.redstoneworld.redutilities.input.InputFormat;
+import de.redstoneworld.redutilities.misc.Formatter;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -32,7 +34,7 @@ public class Commands implements TabExecutor {
 			
 			Player player;
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
+				sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("onlyIngame"));
 				return true;
 			}
 
@@ -57,7 +59,7 @@ public class Commands implements TabExecutor {
 				} else {
 					// e.g. "/wspeed 1"
 					if (isSpeedArgument(args[0])) {
-						float speed = getSpeedValue(args[0]);
+						float speed = Formatter.getRationalNumberValue(args[0]);
 
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player);
 						walkSpeedCmd.setSpecificSpeed(speed);
@@ -85,7 +87,7 @@ public class Commands implements TabExecutor {
 				} else {
 					// e.g. "/wspeed 1 TestUser"
 					if (isSpeedArgument(args[0])) {
-						float speed = getSpeedValue(args[0]);
+						float speed = Formatter.getRationalNumberValue(args[0]);
 
 						WalkSpeedCommand walkSpeedCmd = new WalkSpeedCommand(plugin, player, args[1]);
 						walkSpeedCmd.setSpecificSpeedOther(speed);
@@ -115,7 +117,7 @@ public class Commands implements TabExecutor {
 			
 			Player player;
 			if (!(sender instanceof Player)) {
-				sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("onlyIngame"));
+				sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("onlyIngame"));
 				return true;
 			}
 
@@ -140,7 +142,7 @@ public class Commands implements TabExecutor {
 				} else {
 					// e.g. "/fspeed 1"
 					if (isSpeedArgument(args[0])) {
-						float speed = getSpeedValue(args[0]);
+						float speed = Formatter.getRationalNumberValue(args[0]);
 
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player);
 						flySpeedCmd.setSpecificSpeed(speed);
@@ -168,7 +170,7 @@ public class Commands implements TabExecutor {
 				} else {
 					// e.g. "/fspeed 1 TestUser"
 					if (isSpeedArgument(args[0])) {
-						float speed = getSpeedValue(args[0]);
+						float speed = Formatter.getRationalNumberValue(args[0]);
 
 						FlySpeedCommand flySpeedCmd = new FlySpeedCommand(plugin, player, args[1]);
 						flySpeedCmd.setSpecificSpeedOther(speed);
@@ -199,39 +201,12 @@ public class Commands implements TabExecutor {
 	 * @return 'true' if the input is a rationale number
 	 */
 	private boolean isSpeedArgument(String cmdInput) {
-
-		if (cmdInput.matches("^[-\\+]?[0-9]*[\\.,]?[0-9]+$")) {
-			return true;
-		}
-
+		
+		if (InputFormat.isRationalNumber(cmdInput)) return true;
+		
 		return false;
-
 	}
-
-
-	/**
-	 * This method reforms the speed spelling and convert it to a float number.
-	 *
-	 * @param cmdInput the decimal value argument with one of all supported spellings
-	 * @return (float) the decimal value
-	 */
-	private float getSpeedValue(String cmdInput) {
-
-		// replace decimal separator
-		cmdInput = cmdInput.replace(",", ".");
-
-		// replace decimal input as short write-style without zero at beginning
-		// (e.g. "/speed .4" --> "/speed 0.4")
-		if (cmdInput.matches("^[-\\+]?[\\.,][0-9]+$")) {
-			cmdInput = cmdInput.replace(".", "0.");
-		}
-
-		// convert the string to a float number
-		return Float.parseFloat(cmdInput);
-
-	}
-
-
+	
 	@Override
 	public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
 

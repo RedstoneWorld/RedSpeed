@@ -13,12 +13,12 @@
 
 package de.redstoneworld.redspeed;
 
+import de.redstoneworld.redutilities.files.bukkit.FileReader;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import net.md_5.bungee.api.ChatColor;
 
 public class RedSpeed extends JavaPlugin {
 
+	public FileReader configReader = new FileReader();
 	private Commands cmdExecutor;
 
 	public void onEnable() {
@@ -26,6 +26,7 @@ public class RedSpeed extends JavaPlugin {
 		// save default config and load config
 		saveDefaultConfig();
 		reloadConfig();
+		configReader.setConfig(getConfig());
 		
 		cmdExecutor = new Commands(this);
 		// the synonym commands are defined with the plugin.yml
@@ -37,21 +38,8 @@ public class RedSpeed extends JavaPlugin {
 		
 	}
 
-	/**
-	 * This method reads the specific messages in config.yml and replaces
-	 * the minecraft color codes with a valid character.
-	 *
-	 * @param key YAML key
-	 * @param args placeholder without "%" and value for the placeholder
-	 *
-	 * @return the config messages (String)
-	 */
-	String getLang(String key, String... args) {
-		String lang = getConfig().getString("messages." + key, "&cUnknown language key &6" + key);
-		for (int i = 0; i + 1 < args.length; i += 2) {
-			lang = lang.replace("%" + args[i] + "%", args[i + 1]);
-		}
-		return ChatColor.translateAlternateColorCodes('&', lang);
+	public FileReader getConfigReader() {
+		return configReader;
 	}
-
+	
 }

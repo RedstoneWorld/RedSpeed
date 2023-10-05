@@ -55,8 +55,8 @@ public abstract class SpeedCommand {
         }
 
         float speed = getSpeed(player);
-        player.sendMessage(plugin.getLang("prefix") 
-                + plugin.getLang("show." + speedType + "-own", speedPlaceholder, String.valueOf(speed)));
+        player.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                + plugin.getConfigReader().getLang("show." + speedType + "-own", speedPlaceholder, String.valueOf(speed)));
         return true;
     }
 
@@ -71,7 +71,7 @@ public abstract class SpeedCommand {
         }
         
         setSpeed(player, defaultSpeed);
-        player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-" + speedType + ".ownDefaultValue"));
+        player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("success-" + speedType + ".ownDefaultValue"));
         return true;
     }
 
@@ -88,8 +88,8 @@ public abstract class SpeedCommand {
         }
         
         setSpeed(player, speed);
-        player.sendMessage(plugin.getLang("prefix") 
-                + plugin.getLang("success-" + speedType + ".ownSpecificValue", speedPlaceholder, String.valueOf(speed)));
+        player.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                + plugin.getConfigReader().getLang("success-" + speedType + ".ownSpecificValue", speedPlaceholder, String.valueOf(speed)));
         return true;
     }
 
@@ -106,8 +106,8 @@ public abstract class SpeedCommand {
         }
 
         float speed = getSpeed(player);
-        sender.sendMessage(plugin.getLang("prefix") 
-                + plugin.getLang("show." + speedType + "-other", "name", targetName, speedPlaceholder, String.valueOf(speed)));
+        sender.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                + plugin.getConfigReader().getLang("show." + speedType + "-other", "name", targetName, speedPlaceholder, String.valueOf(speed)));
         return true;
     }
 
@@ -123,10 +123,10 @@ public abstract class SpeedCommand {
 
         setSpeed(player, defaultSpeed);
         if (sender != player) {
-            sender.sendMessage(plugin.getLang("prefix") 
-                    + plugin.getLang("success-" + speedType + ".other", "name", targetName, speedPlaceholder, String.valueOf(defaultSpeed)));
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                    + plugin.getConfigReader().getLang("success-" + speedType + ".other", "name", targetName, speedPlaceholder, String.valueOf(defaultSpeed)));
         }
-        player.sendMessage(plugin.getLang("prefix") + plugin.getLang("success-" + speedType + ".ownDefaultValue"));
+        player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("success-" + speedType + ".ownDefaultValue"));
         return true;
     }
 
@@ -144,11 +144,11 @@ public abstract class SpeedCommand {
         
         setSpeed(player, speed);
         if (sender != player) {
-            sender.sendMessage(plugin.getLang("prefix") 
-                    + plugin.getLang("success-" + speedType + ".other", "name", targetName, speedPlaceholder, String.valueOf(speed)));
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                    + plugin.getConfigReader().getLang("success-" + speedType + ".other", "name", targetName, speedPlaceholder, String.valueOf(speed)));
         }
-        player.sendMessage(plugin.getLang("prefix") 
-                + plugin.getLang("success-" + speedType + ".ownSpecificValue", speedPlaceholder, String.valueOf(speed)));
+        player.sendMessage(plugin.getConfigReader().getLang("prefix") 
+                + plugin.getConfigReader().getLang("success-" + speedType + ".ownSpecificValue", speedPlaceholder, String.valueOf(speed)));
         return true;
     }
 
@@ -159,7 +159,7 @@ public abstract class SpeedCommand {
     void sendSyntaxHelpMessage() {
 
         if (hasUsePermission()) {
-            player.sendMessage(plugin.getLang("prefix") + plugin.getLang("syntaxError." + speedType));
+            player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("syntaxError." + speedType));
         }
     }
 
@@ -168,7 +168,7 @@ public abstract class SpeedCommand {
     public boolean hasUsePermission() {
 
         if (!player.hasPermission("rwm.redspeed." + speedType + ".use")) {
-            player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
+            player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("noPermission"));
             return false;
         }
         return true;
@@ -177,7 +177,7 @@ public abstract class SpeedCommand {
     public boolean hasSeePermission() {
 
         if (!player.hasPermission("rwm.redspeed." + speedType + ".see")) {
-            player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
+            player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("noPermission"));
             return false;
         }
         return true;
@@ -186,7 +186,7 @@ public abstract class SpeedCommand {
     public boolean hasSetPermission() {
 
         if (!player.hasPermission("rwm.redspeed." + speedType + ".set")) {
-            player.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
+            player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("noPermission"));
             return false;
         }
         return true;
@@ -195,7 +195,7 @@ public abstract class SpeedCommand {
     public boolean hasSeeOtherPermission() {
 
         if (!sender.hasPermission("rwm.redspeed." + speedType + ".see.other")) {
-            sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("noPermission"));
             return false;
         }
         return true;
@@ -204,7 +204,7 @@ public abstract class SpeedCommand {
     public boolean hasSetOtherPermission() {
 
         if (!sender.hasPermission("rwm.redspeed." + speedType + ".set.other")) {
-            sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("noPermission"));
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("noPermission"));
             return false;
         }
         return true;
@@ -219,7 +219,7 @@ public abstract class SpeedCommand {
         this.player = plugin.getServer().getPlayerExact(targetName);
         
         if (this.player == null) {
-            sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("playerNotFound", "name", targetName));
+            sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("playerNotFound", "name", targetName));
             return false;
         }
         return true;
@@ -235,9 +235,9 @@ public abstract class SpeedCommand {
         if (speed < 0.0 || speed > maxSpeed) {
 
             if (sender != null) {
-                sender.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue." + speedType));
+                sender.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
             } else {
-                player.sendMessage(plugin.getLang("prefix") + plugin.getLang("wrongValue." + speedType));
+                player.sendMessage(plugin.getConfigReader().getLang("prefix") + plugin.getConfigReader().getLang("wrongValue." + speedType));
             }
             return false;
         }

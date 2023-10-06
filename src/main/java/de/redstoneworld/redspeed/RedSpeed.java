@@ -25,7 +25,6 @@ public class RedSpeed extends JavaPlugin {
 
 		// save default config and load config
 		saveDefaultConfig();
-		reloadConfig();
 		configReader.setConfig(getConfig());
 		
 		cmdExecutor = new Commands(this);

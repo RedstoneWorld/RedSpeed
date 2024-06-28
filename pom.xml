@@ -51,8 +51,8 @@
     <dependencies>
         <dependency>
             <groupId>de.redstoneworld.redutilities</groupId>
-            <artifactId>RedUtilities</artifactId>
-            <version>0.0.11-Snapshot</version>
+            <artifactId>redutilities</artifactId>
+            <version>0.0.13-Snapshot</version>
         </dependency>
         <dependency>
             <groupId>io.papermc.paper</groupId>
